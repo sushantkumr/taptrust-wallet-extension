@@ -9,8 +9,8 @@ import networkReducer from './reducers/network-reducers';
 import userNameReducer from './reducers/username-reducers';
 
 const allReducers = combineReducers({
-	network: networkReducer,
-	userName: userNameReducer
+	networkReducer: networkReducer,
+	userNameReducer: userNameReducer
 })
 
 const store = createStore(allReducers);
