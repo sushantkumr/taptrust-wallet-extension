@@ -4,7 +4,9 @@ import { Form, Button, Input, Message, Divider, Container } from 'semantic-ui-re
 import logo from '../static/img/logo.png';
 import { Redirect/*, withRouter */} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateUser } from '../actions/username-actions';
+import { updateUserName } from '../actions/username-actions';
+
+// Put a dispatcher here
 
 class App extends Component {
 
@@ -12,21 +14,20 @@ class App extends Component {
       super(props)
       this.state = {
         errorMessage: '',
-        username: '',
         loading: false,
         redirect: false,
       };
   }
 
   sendUsernameToBackground = async () => {
-    /*chrome.storage.local.set({'username': this.state.username});*/
+    // TO DO AJAX call to server
   };
 
 
   onSubmit = async (event) => {
       event.preventDefault();
       this.setState({ loading: true, errorMessage: '' });
-
+      this.props.setUserName();
       try {
         //this.props.history.push('/home');
         this.sendUsernameToBackground();
@@ -40,6 +41,7 @@ class App extends Component {
 
   render() {
     console.log(this.props)
+
     const { redirect } = this.state;
 
      if (redirect) {
@@ -70,7 +72,7 @@ class App extends Component {
                           transparent
                           focus
                           fluid
-                          value={this.state.username}
+                          value={this.props.username}
                           onChange={event => this.setState({username: event.target.value})}
                   />
                   <Divider fitted className='white' />
@@ -87,10 +89,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
+const mapStateToProps = (state) => ({
     username: state.username
-  }
-}
+});
 
-export default connect(mapStateToProps)(App);//withRouter(App);
+const mapDispatchToProps = (dispatch) => ({
+    setUserName: username => {dispatch(updateUserName(username))}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);//withRouter(App);

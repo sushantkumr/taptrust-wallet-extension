@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../static/css/App.css';
 import { Divider, Button, Dropdown } from 'semantic-ui-react'
 import logo from '../static/img/logo.png';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Home extends Component {
 
@@ -42,7 +43,7 @@ class Home extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Divider hidden />
           <p className="App-title">TapTrust Wallet</p>
-          <h2>{this.state.username}.taptrust.eth</h2>
+          <h2>{this.props.username}.taptrust.eth</h2>
           <Divider hidden />
         </header>
 
@@ -64,4 +65,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+    username: state.username,
+    network: state.network
+});
+
+export default connect(mapStateToProps)(Home);

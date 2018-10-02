@@ -13,12 +13,7 @@ const allReducers = combineReducers({
 	userName: userNameReducer
 })
 
-const store = createStore(allReducers, {
-	userName: 'cesar',
-	network: '1'
-});
-
-console.log(store.getState());
+const store = createStore(allReducers);
 
 render((
 	<Provider store={store}>
