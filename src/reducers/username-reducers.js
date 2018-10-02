@@ -1,4 +1,4 @@
-import { UPDATE_USERNAME } from '../actions/user-ations'
+import { UPDATE_USERNAME } from '../actions/username-actions'
 
 export default function userNameReducer(state = '', { type, payload }) {
 	switch (type) {
