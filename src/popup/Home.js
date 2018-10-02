@@ -10,12 +10,15 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        network: 1
+        network: 1,
+        username: ''
     };
+
   }
 
   async componentDidMount() {
-    console.log(this.props.username);
+    this.setState({username: this.props.username});
+    console.log(this.state.username);
   }
 
 
@@ -39,7 +42,7 @@ class Home extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Divider hidden />
           <p className="App-title">TapTrust Wallet</p>
-          <h2>{this.props.username}.taptrust.eth</h2>
+          <h2>{this.state.username}.taptrust.eth</h2>
           <Divider hidden />
         </header>
 
@@ -61,9 +64,8 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-    username: state.username,
-    network: state.network
+const mapStateToProps = store => ({
+    username: store.username
 });
 
 export default connect(mapStateToProps)(Home);

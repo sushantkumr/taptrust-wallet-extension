@@ -14,6 +14,7 @@ class App extends Component {
         errorMessage: '',
         loading: false,
         redirect: false,
+        username: ''
       };
   }
 
@@ -25,7 +26,7 @@ class App extends Component {
   onSubmit = async (event) => {
       event.preventDefault();
       this.setState({ loading: true, errorMessage: '' });
-      this.props.setUserName();
+      this.props.setUserName(this.state.username);
       try {
         //this.props.history.push('/home');
         this.sendUsernameToBackground();
@@ -68,7 +69,8 @@ class App extends Component {
                           transparent
                           focus
                           fluid
-                          value={this.props.username}
+                          value={this.state.username}
+                          onChange={event => this.setState({username: event.target.value})}
                   />
                   <Divider fitted className='white' />
                   <Divider hidden />
