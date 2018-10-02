@@ -10,16 +10,12 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        username: '',
         network: 1
     };
   }
 
   async componentDidMount() {
-    /*chrome.storage.local.get('username', (response) => {
-      this.setState({ username: response['username']});
-    });*/
-    //chrome.browserAction.setPopup();
+    console.log(this.props.username);
   }
 
 

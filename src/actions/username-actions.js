@@ -1,10 +1,8 @@
 export const UPDATE_USERNAME = 'UPDATE_USERNAME';
 
-export function updateUserName(userName) {
+export function updateUserName(username) {
 	return {
 		type: UPDATE_USERNAME,
-		payload: {
-			userName: userName
-		}
+		username: username
 	}
 }

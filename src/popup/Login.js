@@ -6,8 +6,6 @@ import { Redirect/*, withRouter */} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUserName } from '../actions/username-actions';
 
-// Put a dispatcher here
-
 class App extends Component {
 
   constructor (props) {
@@ -20,7 +18,7 @@ class App extends Component {
   }
 
   sendUsernameToBackground = async () => {
-    // TO DO AJAX call to server
+    // TODO AJAX call to server
   };
 
 
@@ -40,8 +38,6 @@ class App extends Component {
   }; 
 
   render() {
-    console.log(this.props)
-
     const { redirect } = this.state;
 
      if (redirect) {
@@ -73,7 +69,6 @@ class App extends Component {
                           focus
                           fluid
                           value={this.props.username}
-                          onChange={event => this.setState({username: event.target.value})}
                   />
                   <Divider fitted className='white' />
                   <Divider hidden />
